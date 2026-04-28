@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="나의 고객중심 마인드 유형은? 적극적 소통, 유연성, 긴박감 중 나의 강점을 알아보세요!">
-    <title>나의 고객중심 마인드 유형은?</title>
+    <title>나의 고객중심 마인드 유형은? (2안)</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- 스타일시트 -->
+    <!-- 1안과 동일한 스타일시트 공유 -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -192,12 +192,57 @@
                     </svg>
                     <span>다시 테스트하기</span>
                 </button>
+
+                <!-- 모든 유형 보기 버튼 -->
+                <button id="all-types-btn" class="btn-secondary" onclick="openAllTypes()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <span>모든 유형 결과 보기</span>
+                </button>
+
+                <!-- 투표 섹션 -->
+                <div class="vote-section">
+                    <div class="vote-decoration">🗳️</div>
+                    <h3 class="vote-title">당신의 고객중심 마인드<br>캐릭터에 투표하세요!</h3>
+                    <p class="vote-subtitle">나와 가장 닮은 캐릭터는 누구?<br>투표에 참여하고 결과를 확인해보세요!</p>
+                    <button id="vote-btn" class="btn-vote" onclick="goToVote()">
+                        <span>🎯 투표하러 가기</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </button>
+                </div>
+
             </div>
         </section>
 
     </div>
 
-    <!-- 메인 스크립트 -->
+    <!-- ===== 모든 유형 보기 모달 ===== -->
+    <div id="all-types-modal" class="modal-overlay" onclick="closeAllTypes(event)">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">📋 모든 유형 결과 보기</h2>
+                <button class="modal-close" onclick="closeAllTypes(event, true)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body" id="all-types-list">
+                <!-- JS에서 동적으로 생성 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 2안 전용 스크립트 -->
     <script src="js/script.js"></script>
 </body>
 </html>

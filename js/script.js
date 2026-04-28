@@ -453,4 +453,97 @@ function retryTest() {
 // ===== 초기화 =====
 document.addEventListener('DOMContentLoaded', () => {
     screens.intro.classList.add('active');
+    buildAllTypesModal();
 });
+
+// ===== 모든 유형 보기 모달 =====
+// 모달에 표시할 유형 목록 (모든 유형 보기용)
+const allTypesForModal = [
+    {
+        key: 'comm',
+        emoji: '🎙️',
+        name: '공감의 소통러',
+        tagline: '숨기면 사고, 공유하면 해결!',
+        desc: '문제를 혼자 안고 있지 않고 즉시 공유하여 신뢰를 만드는 사람. 고객이 묻기 전에 먼저 답을 준비하는 선제적 대응의 달인이며, 상대의 언어로 배려의 소통을 합니다.'
+    },
+    {
+        key: 'flex',
+        emoji: '🧩',
+        name: '유연한 해결사',
+        tagline: "'제가요? 왜요?' 대신 개방적인 마인드!",
+        desc: "비즈니스의 변동성 속에서도 고객의 요구에 유연하게 대응하는 해결사. 'No'보다 'How'를 함께 고민하며, 역할 경계를 넘어 팀의 성장을 이끕니다."
+    },
+    {
+        key: 'urg',
+        emoji: '🔥',
+        name: '열정의 실행가',
+        tagline: '고민보다 실행! 속도가 곧 신뢰!',
+        desc: "'나중에'로 미루지 않고 지금 할 수 있는 일부터 실행하는 사람. 고객과의 약속시간을 가장 무거운 숫자로 여기며, 항상 Plan B를 품고 다니는 준비된 실행가입니다."
+    },
+    {
+        key: 'all',
+        emoji: '⭐',
+        name: '완벽한 올라운더',
+        tagline: '소통, 유연성, 실행력을 모두 갖춘 완성형!',
+        desc: '세 가지 키워드를 균형 있게 갖춘 이상적인 고객중심 마인드의 소유자. 상황에 따라 소통하고, 유연하게 대응하며, 빠르게 실행할 줄 아는 팀의 중심축입니다.'
+    },
+    {
+        key: 'bridge',
+        emoji: '💡',
+        name: '하모니 브릿지',
+        tagline: '두 가지 강점의 시너지!',
+        desc: '두 가지 역량이 조화롭게 발달하여 다양한 상황에서 유연하게 대처하는 사람. 팀과 고객 사이를 잇는 소중한 브릿지 역할을 합니다.'
+    },
+    {
+        key: 'growing',
+        emoji: '🌱',
+        name: '성장하는 탐험가',
+        tagline: '지금은 시작점! 무한한 가능성!',
+        desc: '고객중심 마인드를 본격적으로 발휘하기 전 단계. 솔직한 자기인식이야말로 성장의 가장 큰 밑거름입니다. 하루 하나씩 행동문을 실천하며 성장해보세요!'
+    }
+];
+
+// 모달 콘텐츠 빌드 (초기화 시 1회 실행)
+function buildAllTypesModal() {
+    const listEl = document.getElementById('all-types-list');
+    if (!listEl) return;
+
+    listEl.innerHTML = allTypesForModal.map(type => `
+        <div class="type-card">
+            <div class="type-card-header">
+                <span class="type-card-emoji">${type.emoji}</span>
+                <div class="type-card-info">
+                    <div class="type-card-name">${type.name}</div>
+                    <div class="type-card-tagline">${type.tagline}</div>
+                </div>
+            </div>
+            <p class="type-card-desc">${type.desc}</p>
+        </div>
+    `).join('');
+}
+
+// 모달 열기
+function openAllTypes() {
+    const modal = document.getElementById('all-types-modal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+}
+
+// 모달 닫기
+function closeAllTypes(event, forceClose) {
+    const modal = document.getElementById('all-types-modal');
+
+    // 배경 클릭 or X 버튼 클릭 시 닫기
+    if (forceClose || event.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // 스크롤 복원
+    }
+}
+
+// ===== 투표하기 (임시 - 나중에 실제 URL로 교체) =====
+function goToVote() {
+    // TODO: 실제 투표 링크로 교체하세요
+    // 예: window.open('https://forms.google.com/...', '_blank');
+    alert('투표 링크가 아직 준비되지 않았습니다.\n링크가 준비되면 script.js의 goToVote() 함수에 URL을 넣어주세요!');
+}
+
