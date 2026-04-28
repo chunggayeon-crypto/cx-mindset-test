@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="나의 고객중심 마인드 유형은? 적극적 소통, 유연성, 긴박감 중 나의 강점을 알아보세요!">
+    <title>나의 고객중심 마인드 유형은?</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- 스타일시트 -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ===== 배경 장식 요소 ===== -->
+    <div class="bg-decoration">
+        <div class="bg-circle bg-circle-1"></div>
+        <div class="bg-circle bg-circle-2"></div>
+        <div class="bg-circle bg-circle-3"></div>
+    </div>
+
+    <div class="app-container">
+
+        <!-- ===== 1. 인트로 화면 ===== -->
+        <section id="intro-screen" class="screen active">
+            <div class="intro-card glass-card">
+                <div class="intro-badge">Customer Oriented Mindset</div>
+                <h1 class="intro-title">
+                    나의<br>
+                    <span class="highlight-gradient">고객중심 마인드</span><br>
+                    유형은?
+                </h1>
+                <p class="intro-subtitle">
+                    9개의 상황 속에서 나의 선택을 통해<br>
+                    고객중심 마인드 유형을 알아보세요!
+                </p>
+                <div class="intro-keywords">
+                    <span class="keyword-chip keyword-comm">🎙️ 적극적 소통</span>
+                    <span class="keyword-chip keyword-flex">🧩 유연성</span>
+                    <span class="keyword-chip keyword-urg">🔥 긴박감</span>
+                </div>
+                <button id="start-btn" class="btn-primary" onclick="startTest()">
+                    <span>시작하기</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+                <p class="intro-time">⏱️ 약 2분 소요</p>
+            </div>
+        </section>
+
+        <!-- ===== 2. 질문 화면 ===== -->
+        <section id="question-screen" class="screen">
+            <!-- 키워드 카테고리 표시 -->
+            <div class="category-badge-container">
+                <div id="category-badge" class="category-badge">
+                    <span id="category-emoji">🎙️</span>
+                    <span id="category-name">적극적 소통</span>
+                    <span id="category-count">(1/3)</span>
+                </div>
+            </div>
+
+            <!-- 프로그레스바 -->
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span id="progress-text">1 / 9</span>
+                </div>
+                <div class="progress-bar-track">
+                    <div id="progress-bar" class="progress-bar-fill"></div>
+                </div>
+            </div>
+
+            <!-- 질문 카드 -->
+            <div class="question-wrapper">
+                <div id="question-card" class="question-card glass-card">
+                    <div class="question-number" id="question-number">Q1</div>
+                    <p class="question-situation" id="question-situation">
+                        <!-- 상황 텍스트 -->
+                    </p>
+                    <p class="question-ask" id="question-ask">
+                        <!-- 질문 텍스트 -->
+                    </p>
+                    <div class="choices">
+                        <button class="choice-btn" id="choice-a" onclick="selectAnswer('a')">
+                            <span class="choice-label">A</span>
+                            <span class="choice-text" id="choice-a-text"></span>
+                        </button>
+                        <button class="choice-btn" id="choice-b" onclick="selectAnswer('b')">
+                            <span class="choice-label">B</span>
+                            <span class="choice-text" id="choice-b-text"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 3. 로딩 화면 ===== -->
+        <section id="loading-screen" class="screen">
+            <div class="loading-card glass-card">
+                <div class="loading-emojis">
+                    <span class="loading-emoji emoji-bounce-1">🎙️</span>
+                    <span class="loading-emoji emoji-bounce-2">🧩</span>
+                    <span class="loading-emoji emoji-bounce-3">🔥</span>
+                </div>
+                <h2 class="loading-title">당신의 유형을 분석 중...</h2>
+                <div class="loading-bar-track">
+                    <div class="loading-bar-fill"></div>
+                </div>
+                <p class="loading-subtitle">고객중심 마인드 DNA를 해독하고 있어요 🧬</p>
+            </div>
+        </section>
+
+        <!-- ===== 4. 결과 화면 ===== -->
+        <section id="result-screen" class="screen">
+            <div class="result-card glass-card">
+                <!-- 결과 헤더 -->
+                <div class="result-header">
+                    <div class="result-badge">My COM Type</div>
+                    <div class="result-emoji" id="result-emoji">🎙️</div>
+                    <h2 class="result-type-name" id="result-type-name">공감의 소통러</h2>
+                    <p class="result-tagline" id="result-tagline">숨기면 사고, 공유하면 해결!</p>
+                </div>
+
+                <!-- 결과 설명 -->
+                <div class="result-body">
+                    <!-- 강점 섹션 -->
+                    <div class="result-section">
+                        <h3 class="section-title">
+                            <span class="section-icon">💪</span> 고객중심 마인드 강점
+                        </h3>
+                        <p class="section-content" id="result-strength"></p>
+                    </div>
+
+                    <!-- 팁 섹션 -->
+                    <div class="result-section tip-section">
+                        <h3 class="section-title">
+                            <span class="section-icon">💡</span> 더 나은 고객 경험을 위한 Tip
+                        </h3>
+                        <p class="section-content" id="result-tip"></p>
+                    </div>
+                </div>
+
+                <!-- 키워드 리마인드 섹션 -->
+                <div class="remind-section">
+                    <h3 class="remind-title">📌 고객중심 마인드 3대 키워드</h3>
+                    <div class="remind-cards">
+                        <!-- 적극적 소통 -->
+                        <div class="remind-card remind-comm">
+                            <div class="remind-card-header">
+                                <span class="remind-emoji">🎙️</span>
+                                <span class="remind-keyword">적극적 소통</span>
+                            </div>
+                            <ul class="remind-list">
+                                <li>숨기면 사고, 공유하면 해결입니다</li>
+                                <li>고객이 묻기 전에 우리가 먼저 답을 준비합니다</li>
+                                <li>나의 언어보다 너의 언어로 소통합니다</li>
+                            </ul>
+                        </div>
+                        <!-- 유연성 -->
+                        <div class="remind-card remind-flex">
+                            <div class="remind-card-header">
+                                <span class="remind-emoji">🧩</span>
+                                <span class="remind-keyword">유연성</span>
+                            </div>
+                            <ul class="remind-list">
+                                <li>제가요? 왜요? 대신 개방적인 태도를 갖습니다</li>
+                                <li>No보다 How를 함께 고민하여 대안을 찾습니다</li>
+                                <li>'네 일'은 내일의 '내 일'입니다</li>
+                            </ul>
+                        </div>
+                        <!-- 긴박감 -->
+                        <div class="remind-card remind-urg">
+                            <div class="remind-card-header">
+                                <span class="remind-emoji">🔥</span>
+                                <span class="remind-keyword">긴박감</span>
+                            </div>
+                            <ul class="remind-list">
+                                <li>고민보다 실행이 더 완벽한 방법입니다</li>
+                                <li>고객과의 약속시간이 가장 무거운 숫자입니다</li>
+                                <li>Plan B는 Best Plan을 위한 필수옵션입니다</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 다시하기 버튼 -->
+                <button id="retry-btn" class="btn-primary btn-retry" onclick="retryTest()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 4v6h6M23 20v-6h-6"/>
+                        <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
+                    </svg>
+                    <span>다시 테스트하기</span>
+                </button>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 메인 스크립트 -->
+    <script src="js/script.js"></script>
+</body>
+</html>
