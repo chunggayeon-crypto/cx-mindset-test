@@ -316,6 +316,8 @@ function selectAnswer(choice) {
             card.classList.add('slide-out');
 
             setTimeout(() => {
+                // 모바일 터치 상태 초기화 (이전 답변의 hover/focus 잔상 방지)
+                document.activeElement.blur();
                 displayQuestion(currentQuestion);
                 card.classList.remove('slide-out');
                 card.classList.add('slide-in');

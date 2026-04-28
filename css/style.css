@@ -495,14 +495,17 @@ body {
     transition: opacity var(--transition-normal);
 }
 
-.choice-btn:hover {
-    border-color: rgba(123, 147, 255, 0.3);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(150, 140, 200, 0.15);
-}
+/* hover 가능한 기기(PC)에서만 hover 효과 적용 — 모바일 sticky hover 방지 */
+@media (hover: hover) {
+    .choice-btn:hover {
+        border-color: rgba(123, 147, 255, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(150, 140, 200, 0.15);
+    }
 
-.choice-btn:hover::before {
-    opacity: 1;
+    .choice-btn:hover::before {
+        opacity: 1;
+    }
 }
 
 .choice-btn:active {
