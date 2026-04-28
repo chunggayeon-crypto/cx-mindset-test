@@ -345,10 +345,11 @@ body {
     transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ===== 카테고리 배지 (2안 전용) ===== */
+/* ===== 카테고리 배지 (2안 전용) — 현재 비표시 ===== */
 .category-badge-container {
     text-align: center;
     margin-bottom: 16px;
+    display: none;
 }
 
 .category-badge {
