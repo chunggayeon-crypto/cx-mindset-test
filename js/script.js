@@ -225,6 +225,7 @@ let scores = {                 // 키워드별 점수 (각 0~3점)
     flex: 0,
     urg: 0
 };
+let answers = [];              // 각 문항의 선택 기록 (이전 문항 이동을 위해)
 let isAnimating = false;       // 애니메이션 중복 방지
 
 // ===== DOM 요소 참조 =====
@@ -255,6 +256,7 @@ function switchScreen(from, to) {
 function startTest() {
     currentQuestion = 0;
     scores = { comm: 0, flex: 0, urg: 0 };
+    answers = [];  // 답변 기록 초기화
 
     displayQuestion(0);
     switchScreen(screens.intro, screens.question);
@@ -289,6 +291,12 @@ function displayQuestion(index) {
     // 선택 상태 초기화
     document.getElementById('choice-a').classList.remove('selected');
     document.getElementById('choice-b').classList.remove('selected');
+
+    // 이전 문항 버튼: Q1에서는 숨기고, Q2부터 표시
+    const prevBtn = document.getElementById('prev-btn');
+    if (prevBtn) {
+        prevBtn.style.display = index === 0 ? 'none' : 'inline-flex';
+    }
 }
 
 // ===== 답변 선택 =====
@@ -301,6 +309,9 @@ function selectAnswer(choice) {
     // 선택된 버튼 하이라이트
     const selectedBtn = document.getElementById(`choice-${choice}`);
     selectedBtn.classList.add('selected');
+
+    // 답변 기록 저장 (이전 문항 이동을 위해)
+    answers[currentQuestion] = choice;
 
     // 점수 추가 (B 선택 시 해당 키워드에 1점)
     if (choice === 'b') {
@@ -438,6 +449,42 @@ function createConfetti() {
     setTimeout(() => {
         container.remove();
     }, 5000);
+}
+
+// ===== 이전 문항으로 이동 =====
+function goToPrevQuestion() {
+    if (currentQuestion <= 0 || isAnimating) return;
+    isAnimating = true;
+
+    // 이전 문항에서 기록한 답변의 점수를 되돌리기
+    const prevIndex = currentQuestion - 1;
+    const prevAnswer = answers[prevIndex];
+    const prevQ = questions[prevIndex];
+
+    if (prevAnswer === 'b') {
+        scores[prevQ.keyword] -= prevQ.choiceB.score;
+    }
+
+    // 답변 기록 삭제
+    answers[prevIndex] = undefined;
+
+    // 이전 문항으로 이동
+    currentQuestion = prevIndex;
+
+    const card = document.getElementById('question-card');
+    card.classList.add('slide-out');
+
+    setTimeout(() => {
+        document.activeElement.blur();
+        displayQuestion(currentQuestion);
+        card.classList.remove('slide-out');
+        card.classList.add('slide-in');
+
+        setTimeout(() => {
+            card.classList.remove('slide-in');
+            isAnimating = false;
+        }, 350);
+    }, 350);
 }
 
 // ===== 다시 테스트하기 =====
