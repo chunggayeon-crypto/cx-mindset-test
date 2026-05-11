@@ -12,11 +12,11 @@ const questions = [
         keyword: "comm",
         category: "적극적 소통",
         categoryEmoji: "🎙️",
-        categoryIndex: 1,  // 이 카테고리 내 몇 번째 문항인지
-        situation: "팀 회의 중, 아직 해결되지 않은 이슈가 있습니다.",
-        ask: "이 상황에서 나는...",
+        categoryIndex: 1,
+        situation: "팀 회의 중, 나의 과업에서 해결되지 않은 이슈가 있다.",
+        ask: "이 상황에서 나는?",
         choiceA: {
-            text: "완벽히 정리된 후 공유하자. 괜히 혼란만 가중될 수 있어.",
+            text: "완벽히 정리된 후 공유하자. 괜히 혼란만 가중될 수 있다.",
             score: 0
         },
         choiceB: {
@@ -30,15 +30,15 @@ const questions = [
         category: "적극적 소통",
         categoryEmoji: "🎙️",
         categoryIndex: 2,
-        situation: "상대방이 내 설명을 잘 이해하지 못한 것 같습니다.",
-        ask: "나는 어떻게 대응하나요?",
+        situation: "상대방이 내 설명을 잘 이해하지 못한 것 같다.",
+        ask: "나는 어떻게 대응할까?",
         choiceA: {
-            text: "같은 내용을 더 자세히 반복해서 설명한다.",
-            score: 0
+            text: "상대방의 눈높이에 맞추어 다시 설명한다.",
+            score: 1
         },
         choiceB: {
-            text: "상대방이 익숙한 언어와 사례로 바꿔 다시 설명한다.",
-            score: 1
+            text: "같은 내용을 반복해서 설명한다.",
+            score: 0
         }
     },
     {
@@ -47,15 +47,15 @@ const questions = [
         category: "적극적 소통",
         categoryEmoji: "🎙️",
         categoryIndex: 3,
-        situation: "고객/동료가 아직 질문하지 않은 사안이 있습니다.",
-        ask: "나는 어떻게 하나요?",
+        situation: "고객/동료가 아직 질문하지 않은 사안이 있다.",
+        ask: "나는 어떻게 할까?",
         choiceA: {
-            text: "물어볼 때까지 기다린다. 먼저 나서면 괜히 복잡해질 수 있다.",
-            score: 0
+            text: "필요한 내용을 먼저 파악하고 정리하여 제안한다.",
+            score: 1
         },
         choiceB: {
-            text: "먼저 파악해서 선제적으로 답을 준비해 공유한다.",
-            score: 1
+            text: "먼저 나서면 복잡해질 수 있으니 물어볼 때까지 기다린다.",
+            score: 0
         }
     },
 
@@ -66,15 +66,15 @@ const questions = [
         category: "유연성",
         categoryEmoji: "🧩",
         categoryIndex: 1,
-        situation: "내 방식과 다른 방법을 동료가 제안했습니다.",
-        ask: "솔직히 내 반응은?",
+        situation: "기존 내 업무방식과 다른 방식을 동료가 제안했다.",
+        ask: "솔직한 내 반응은?",
         choiceA: {
-            text: "지금까지 잘 해왔는데... 굳이 바꿔야 할까 싶다.",
-            score: 0
+            text: "내 방식이 전부가 아닐 수 있으니 동료의 제안을 수용해 본다.",
+            score: 1
         },
         choiceB: {
-            text: "내 방식이 전부가 아닐 수 있다! 열린 마음으로 수용해 본다.",
-            score: 1
+            text: "지금까지 잘 해온 방식이라 기존 내 방식을 유지한다.",
+            score: 0
         }
     },
     {
@@ -83,14 +83,14 @@ const questions = [
         category: "유연성",
         categoryEmoji: "🧩",
         categoryIndex: 2,
-        situation: "갑작스러운 요청으로 원래 계획이 틀어졌습니다.",
-        ask: "이런 상황에서 나는...",
+        situation: "고객/동료의 갑작스러운 요청이 왔다. 원래 계획한 일들이 틀어질텐데...",
+        ask: "이런 상황에서 나는?",
         choiceA: {
-            text: "\"지금은 안 됩니다\"라고 명확히 선을 긋는다.",
+            text: "\"예정된 일들이 있어서 지금은 어려울 것 같습니다.\"라고 명확히 의사를 전달한다.",
             score: 0
         },
         choiceB: {
-            text: "No 대신 How를 고민하며 대안을 함께 찾는다.",
+            text: "어떻게 요청을 수용할 수 있을지 대안을 고민한다.",
             score: 1
         }
     },
@@ -100,8 +100,8 @@ const questions = [
         category: "유연성",
         categoryEmoji: "🧩",
         categoryIndex: 3,
-        situation: "담당 업무 외의 일을 부탁받았습니다.",
-        ask: "내 첫 번째 반응은?",
+        situation: "나의 담당 업무 외의 일을 부탁받았다.",
+        ask: "솔직한 나의 반응은?",
         choiceA: {
             text: "\"그건 제 일이 아닌데요\"라고 정중히 거절한다.",
             score: 0
@@ -119,15 +119,15 @@ const questions = [
         category: "긴박감",
         categoryEmoji: "🔥",
         categoryIndex: 1,
-        situation: "아직 마감까지 시간이 좀 남아있습니다.",
-        ask: "나는 보통...",
+        situation: "과업 마감까지 시간이 좀 남아있다.",
+        ask: "이럴 때 나는 보통...",
         choiceA: {
-            text: "마감이 임박하면 그때 집중적으로 하는 편이다.",
-            score: 0
+            text: "우선순위를 정해놓고 하나씩 마무리한다.",
+            score: 1
         },
         choiceB: {
-            text: "지금 할 수 있는 것부터 차근차근 실행해 미래를 준비한다.",
-            score: 1
+            text: "마감이 임박하면 그 때 집중적으로 하는 편이다.",
+            score: 0
         }
     },
     {
@@ -136,14 +136,14 @@ const questions = [
         category: "긴박감",
         categoryEmoji: "🔥",
         categoryIndex: 2,
-        situation: "약속한 기한을 지키기 어려운 상황이 생겼습니다.",
-        ask: "나의 행동은?",
+        situation: "약속한 기한을 지키기 어려운 상황이 생겼다.",
+        ask: "이 때 나의 행동은?",
         choiceA: {
-            text: "최대한 맞추려고 노력하되, 안 되면 양해를 구한다.",
+            text: "최대한 맞추려고 노력하되, 안되면 양해를 구한다.",
             score: 0
         },
         choiceB: {
-            text: "기한은 무조건 지켜야 할 약속. 미리 방법을 찾고 대비책을 세운다.",
+            text: "기한 준수는 선택이 아닌 필수! 가능한 모든 방법을 동원하여 대비책을 세워 실행한다.",
             score: 1
         }
     },
@@ -153,14 +153,14 @@ const questions = [
         category: "긴박감",
         categoryEmoji: "🔥",
         categoryIndex: 3,
-        situation: "예상치 못한 변수가 생겨 계획에 차질이 생겼습니다.",
-        ask: "나는 어떻게 대응하나요?",
+        situation: "예상치 못한 변수로 계획에 차질이 생겼다.",
+        ask: "나는 어떻게 대응할까?",
         choiceA: {
-            text: "상황을 파악하고 수정된 계획을 세우는 데 집중한다.",
+            text: "상황을 빠르게 파악하고 수정된 계획을 세우는 데 집중한다.",
             score: 0
         },
         choiceB: {
-            text: "Plan B를 미리 마련해 두었기 때문에 빠르게 전환한다.",
+            text: "미리 마련해둔 Plan B로 빠르게 전환한다.",
             score: 1
         }
     }
@@ -313,8 +313,10 @@ function selectAnswer(choice) {
     // 답변 기록 저장 (이전 문항 이동을 위해)
     answers[currentQuestion] = choice;
 
-    // 점수 추가 (B 선택 시 해당 키워드에 1점)
-    if (choice === 'b') {
+    // 점수 추가 (선택한 보기의 score를 해당 키워드에 반영)
+    if (choice === 'a') {
+        scores[q.keyword] += q.choiceA.score;
+    } else if (choice === 'b') {
         scores[q.keyword] += q.choiceB.score;
     }
 
@@ -461,7 +463,9 @@ function goToPrevQuestion() {
     const prevAnswer = answers[prevIndex];
     const prevQ = questions[prevIndex];
 
-    if (prevAnswer === 'b') {
+    if (prevAnswer === 'a') {
+        scores[prevQ.keyword] -= prevQ.choiceA.score;
+    } else if (prevAnswer === 'b') {
         scores[prevQ.keyword] -= prevQ.choiceB.score;
     }
 
